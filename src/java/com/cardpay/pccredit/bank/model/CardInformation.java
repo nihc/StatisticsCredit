@@ -29,6 +29,7 @@ public class CardInformation {
 	private String cardAffiliatedScale;
 	private String cardLossDate;
 	private String cashSuspendMode;
+	private String cardType;
 
 	public String getCustomerId() {
 		return customerId;
@@ -188,5 +189,13 @@ public class CardInformation {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getCardType() {
+		return cardType;
+	}
+
+	public void setCardType(String cardType) {
+		this.cardType = cardType;
 	}
 }

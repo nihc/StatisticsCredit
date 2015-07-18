@@ -27,6 +27,8 @@ public class CustomerAccountBill {
     private String balanceAccount;
 
     private String perdayCreditlineAccount;
+    
+    private String cardNumber;
 
     public String getId() {
         return id;
@@ -123,4 +125,12 @@ public class CustomerAccountBill {
     public void setPerdayCreditlineAccount(String perdayCreditlineAccount) {
         this.perdayCreditlineAccount = perdayCreditlineAccount == null ? null : perdayCreditlineAccount.trim();
     }
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
 }

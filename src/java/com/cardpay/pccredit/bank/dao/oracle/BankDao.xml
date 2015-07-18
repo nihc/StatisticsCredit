@@ -23,6 +23,7 @@
 		<result property="cardAffiliatedScale" column="CARD_AFFILIATED_SCALE" />
 		<result property="cardLossDate" column="CARD_LOSS_DATE" />
 		<result property="cashSuspendMode" column="CASH_SUSPEND_MODE" />
+		<result property="cardType" column="CARD_TYPE" />
 </resultMap>
 <resultMap id="CustomerAccountInforResultMap" type="com.cardpay.pccredit.bank.model.CustomerAccountInfor">
 		<result property="id" column="id" />
@@ -266,8 +267,8 @@
 	<insert id="insertCardInformation" parameterType="com.cardpay.pccredit.bank.model.CardInformation">
 		insert into
 		CARD_INFORMATION
-		(ID,CUSTOMER_ID,PRODUCT_ID,CARD_NUMBER,CARD_ACTIVATE_DATE,CARD_STATUS_CODE,CARD_STATUS_DATE,CARD_LOGOUT_CODE,CASH_SUSPEND_DATE,CARD_AFFILIATED,ID_NUMBER,EXPIRE_DATE,AGAIN_EXPIRE_DATE,CARD_COST,NEXT_COST_MONTH,CARD_MAKE_DATE,CARD_MAKE_CODE,CARD_AFFILIATED_SCALE,CARD_LOSS_DATE,CASH_SUSPEND_MODE)
-		values(#{id},#{customerId},#{productId},#{cardNumber},#{cardActivateDate},#{cardStatusCode},#{cardStatusDate},#{cardLogoutCode},#{cashSuspendDate},#{cardAffiliated},#{idNumber},#{expireDate},#{againExpireDate},#{cardCost},#{nextCostMonth},#{cardMakeDate},#{cardMakeCode},#{cardAffiliatedScale},#{cardLossDate},#{cashSuspendMode})
+		(ID,CUSTOMER_ID,PRODUCT_ID,CARD_NUMBER,CARD_ACTIVATE_DATE,CARD_STATUS_CODE,CARD_STATUS_DATE,CARD_LOGOUT_CODE,CASH_SUSPEND_DATE,CARD_AFFILIATED,ID_NUMBER,EXPIRE_DATE,AGAIN_EXPIRE_DATE,CARD_COST,NEXT_COST_MONTH,CARD_MAKE_DATE,CARD_MAKE_CODE,CARD_AFFILIATED_SCALE,CARD_LOSS_DATE,CASH_SUSPEND_MODE,CARD_TYPE)
+		values(#{id},#{customerId},#{productId},#{cardNumber},#{cardActivateDate},#{cardStatusCode},#{cardStatusDate},#{cardLogoutCode},#{cashSuspendDate},#{cardAffiliated},#{idNumber},#{expireDate},#{againExpireDate},#{cardCost},#{nextCostMonth},#{cardMakeDate},#{cardMakeCode},#{cardAffiliatedScale},#{cardLossDate},#{cashSuspendMode},#{cardType})
 	</insert>
 	<update id="updateCardInformation" parameterType="com.cardpay.pccredit.bank.model.CardInformation">
 		update 
@@ -317,6 +318,9 @@
 			</if>
 			<if test="cashSuspendMode!=null and cashSuspendMode!=''">
 				CASH_SUSPEND_MODE=#{cashSuspendMode},
+			</if>
+			<if test="cardType!=null and cardType!=''">
+				CARD_TYPE=#{cardType},
 			</if>
 			<if test="id!=null and id!=''">
 				ID=#{id},

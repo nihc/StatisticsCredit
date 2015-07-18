@@ -95,7 +95,8 @@ public class BankService extends AmountConfig{
 				if(StringUtils.isNotEmpty(xaccount)){
 					/*添加客户账户账单*/
 					bill = new CustomerAccountBill();
-					bill.setAccountNumber(xaccount);
+					bill.setAccountNumber(xaccount);//修改目的。
+					bill.setCardNumber(cardNbr);
 					/*已发生逾期金额（逾期金额）*/
 					String overdueAmount = sxsc.getOdueHeld()==null?null:String.valueOf(sxsc.getOdueHeld());
 					if(StringUtils.isEmpty(overdueAmount)){

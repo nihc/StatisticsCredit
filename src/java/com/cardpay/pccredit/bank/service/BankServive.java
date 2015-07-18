@@ -599,6 +599,8 @@ public class BankServive extends AmountConfig{
 		String cardNbr = sxcc.getCardNbr();
 		//卡片状态代码
 		String canclCode = sxcc.getCanclCode();
+		//卡片产品种类
+		String cardType = sxcc.getProduct();
 		try{
 			if(StringUtils.isNotEmpty(cardNbr)){
 				/*卡号关联得到对应的账户资料信息*/
@@ -675,6 +677,7 @@ public class BankServive extends AmountConfig{
 							cardInfor.setCardActivateDate(activeday);
 							cardInfor.setExpireDate(expiryDte);
 							cardInfor.setCardStatusCode(canclCode);
+							cardInfor.setCardType(cardType);
 							/*执行操作*/
 							updateCardInformation(cardInfor);
 						}else{
@@ -689,6 +692,7 @@ public class BankServive extends AmountConfig{
 							cardInfor.setExpireDate(expiryDte);
 							cardInfor.setCardStatusCode(canclCode);
 							cardInfor.setIdNumber(xm.getCertCode()==null?null:xm.getCertCode());
+							cardInfor.setCardType(cardType);
 							/*执行操作*/
 							insertCardInformation(cardInfor);
 						}

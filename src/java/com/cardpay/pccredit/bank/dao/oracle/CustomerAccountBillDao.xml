@@ -14,6 +14,7 @@
     <result column="PAID_INTEREST_ACCOUNT" property="paidInterestAccount" jdbcType="VARCHAR" />
     <result column="BALANCE_ACCOUNT" property="balanceAccount" jdbcType="VARCHAR" />
     <result column="PERDAY_CREDITLINE_ACCOUNT" property="perdayCreditlineAccount" jdbcType="VARCHAR" />
+     <result column="CARD_NUMBER" property="cardNumber" jdbcType="VARCHAR" />
   </resultMap>
 
 <insert id="insert" parameterType="com.cardpay.pccredit.bank.model.CustomerAccountBill" >
@@ -21,12 +22,12 @@
       CURRENT_MONTH_INTEREST_ACCOUNT, PAYBACK_ACCOUNT, 
       CREATED_DATE, OVERDRAFT_ACCOUNT, BILL_DATA_YEAR, 
       BILL_DATA_MONTH, PAID_INTEREST_ACCOUNT, BALANCE_ACCOUNT, 
-      PERDAY_CREDITLINE_ACCOUNT)
+      PERDAY_CREDITLINE_ACCOUNT,CARD_NUMBER)
     values (#{id,jdbcType=VARCHAR}, #{accountNumber,jdbcType=VARCHAR}, #{overdueAmount,jdbcType=VARCHAR}, 
       #{currentMonthInterestAccount,jdbcType=VARCHAR}, #{paybackAccount,jdbcType=VARCHAR}, 
       #{createdDate,jdbcType=DATE}, #{overdraftAccount,jdbcType=VARCHAR}, #{billDataYear,jdbcType=DECIMAL}, 
       #{billDataMonth,jdbcType=DECIMAL}, #{paidInterestAccount,jdbcType=VARCHAR}, #{balanceAccount,jdbcType=VARCHAR}, 
-      #{perdayCreditlineAccount,jdbcType=VARCHAR})
+      #{perdayCreditlineAccount,jdbcType=VARCHAR}, #{cardNumber,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.cardpay.pccredit.bank.model.CustomerAccountBill" >
     insert into CUSTOMER_ACCOUNT_BILL
@@ -67,6 +68,9 @@
       <if test="perdayCreditlineAccount != null" >
         PERDAY_CREDITLINE_ACCOUNT,
       </if>
+      <if test="cardNumber != null" >
+        CARD_NUMBER,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -104,6 +108,9 @@
       </if>
       <if test="perdayCreditlineAccount != null" >
         #{perdayCreditlineAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNumber != null" >
+        #{cardNumber,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
